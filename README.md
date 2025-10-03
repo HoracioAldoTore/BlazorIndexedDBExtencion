@@ -3,3 +3,7 @@ Métodos de extensión que utilizan el paquete de NuGet de Blazor.IndexedDB vers
 
 Video sobre una aplicacion Blazor en lenguaje C#
 https://youtu.be/WPkL43kr5x0
+
+Los métodos de extensión se encuentran definidos en el archivo **BlazorIndexedDBExtencion.cs** 
+y utilizan reflection c# para descubrir métodos y propiedades.
+
