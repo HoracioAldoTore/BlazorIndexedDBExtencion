@@ -1,0 +1,138 @@
+﻿@page "/"
+@using AppIndexedDB.Data
+@inject IJSRuntime JsRuntime;
+
+@inject Blazor.IndexedDB.IIndexedDbFactory DbFactory
+
+<PageTitle>Blazor.IndexedDB 3.0.3 CRUD</PageTitle>
+<h1>Blazor.IndexedDB 3.0.3 CRUD</h1>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-radius: 5px; /* Adds rounded corners to cells */
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+</style>
+
+<button class="btn btn-primary" @onclick="Crear">Crear (Create)</button>
+<button class="btn btn-primary" @onclick="Leer">Leer (Read)</button>
+<button class="btn btn-primary" @onclick="Actualizar">Actualizar (Update)</button>
+<button class="btn btn-primary" @onclick="Eliminar">Eliminar (Delete)</button>
+<br />
+
+<br />
+<b>
+    <a href="" @onclick="Refresh">Refrescar</a>
+    Total empleados: @_Employees.Count   
+</b>
+<table width="70%">
+    <tr style="background-color:lavender">
+        <td>
+            <b>Id</b>
+        </td>
+        <td>
+            <b>FirstName</b>
+        </td>
+        <td>
+            <b>LastName</b>
+        </td>
+    </tr>
+    @foreach (Employee employee in _Employees)
+    {
+        <tr>
+            <td>
+                @employee.Id
+            </td>
+            <td>
+                @employee.FirstName
+            </td>
+            <td>
+                @employee.LastName
+            </td>          
+        </tr> 
+    }
+</table>
+
+@code {
+    private List<Employee> _Employees = new List<Employee>();
+
+    protected async override void OnInitialized()
+    {
+        //Guia de instalacion de Package Blazor.IndexedDB
+        //https://www.nuget.org/packages/Blazor.IndexedDB/3.0.3
+        DbFactory.Use<ExampleDb>();
+        await Refresh();
+        base.OnInitialized();
+    }
+
+    private async Task Refresh()
+    {
+        _Employees = await DbFactory.SelectAll<Employee>();
+        StateHasChanged();
+    }
+
+    private async void Crear()
+    {
+        // Crear (Create)
+        var newEmployee = new Employee
+        {
+            FirstName = $"Manuel",
+            LastName = $"Sadosky - {Guid.NewGuid()}"
+        };
+        await DbFactory.Insert(newEmployee);
+        //await DbFactory.Save(newEmployee);
+
+        await Refresh();
+    }
+
+    private async void Leer()
+    {
+
+
+        // Leer (Read)  
+        int id = _Employees.Last().Id.Value;
+        var oneEmployee = await DbFactory.SelectOne<Employee>(id);
+        string msg = $"Id:        {oneEmployee.Id}\n" +
+                     $"FirstName: {oneEmployee.FirstName}\n" +
+                     $"LastName:  {oneEmployee.LastName}\n";
+        
+        await JsRuntime.InvokeVoidAsync("alert", msg); // Alert
+
+        await Refresh();
+    }
+
+    private async void Actualizar()
+    {
+        // Actualizar (Update)
+        foreach(Employee employee in _Employees)
+        {
+            if (employee.LastName.Contains("Sadosky"))
+            {
+                employee.FirstName = "René";
+                employee.LastName = $"Favaloro - {Guid.NewGuid()}";
+            }
+            else
+            {
+                employee.FirstName = "Manuel";
+                employee.LastName = $"Sadosky  - {Guid.NewGuid()}";
+            }
+            await DbFactory.Update(employee);
+        }
+        
+        await Refresh();
+    }
+
+    private async void Eliminar()
+    {
+        // Eliminar (Delete)
+        Employee employee = _Employees.Last(); 
+
+        await DbFactory.Delete<Employee>(employee.Id.Value);
+
+        await Refresh();
+    }
+}
