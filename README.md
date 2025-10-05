@@ -88,3 +88,11 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 		await Refresh();
 	}
 ```
+
+**todas las entidades deben implementar la siguiente interfaz:** 
+```csharp
+	public interface IEntity
+	{
+	 int? Id { get; set; }
+	}
+```
