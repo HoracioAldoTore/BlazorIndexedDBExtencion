@@ -4,7 +4,7 @@ Métodos de extensión que utilizan el paquete de NuGet de Blazor.IndexedDB vers
 Video sobre una aplicacion Blazor en lenguaje C#
 https://youtu.be/WPkL43kr5x0
 
-## Pasos a siguir para la instalacion:
+## Pasos a seguir para la instalacion:
 
 **1)** Instalar el paquete de NuGet de Blazor.IndexedDB version 3.0.3. Siguindo lo indicado en: 
 https://www.nuget.org/packages/Blazor.IndexedDB
