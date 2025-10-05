@@ -89,10 +89,22 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 	}
 ```
 
-## todas las entidades deben implementar la siguiente interfaz:
+## Todas las entidades deben implementar la siguiente interfaz:
 ```csharp
 	public interface IEntity
 	{
 	 int? Id { get; set; }
+	}
+```
+**Ejemplo de entidad** 
+```csharp
+	public class Employee : IEntity
+	{
+	 [Key]
+	 public int? Id { get; set; }
+	 
+	 public string? FirstName { get; set; }
+	 
+	 public string? LastName { get; set; }
 	}
 ```
