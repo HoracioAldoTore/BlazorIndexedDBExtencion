@@ -15,6 +15,9 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 
 **3)** Crear el modelo de base heredando de IndexedDb, puede tomar como ejemplo el arrchivo **ExampleDb.cs**
 
+## Codigo de ejemplo de un CRUD
+
+**Create** 
 ```
   private async void Crear()
   {
