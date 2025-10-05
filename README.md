@@ -51,3 +51,40 @@ y utilizan reflection c# para descubrir métodos y propiedades.
         await Refresh();
     }
 ```
+
+**Update** 
+```csharp
+private async void Actualizar()
+{
+    // Actualizar (Update)
+    foreach(Employee employee in _Employees)
+    {
+        if (employee.LastName.Contains("Sadosky"))
+        {
+            employee.FirstName = "René";
+            employee.LastName = $"Favaloro - {Guid.NewGuid()}";
+        }
+        else
+        {
+            employee.FirstName = "Manuel";
+            employee.LastName = $"Sadosky  - {Guid.NewGuid()}";
+        }
+        await DbFactory.Update(employee);
+    }
+    
+    await Refresh();
+}
+```
+
+**Delete** 
+```csharp
+private async void Eliminar()
+{
+    // Eliminar (Delete)
+    Employee employee = _Employees.Last(); 
+
+    await DbFactory.Delete<Employee>(employee.Id.Value);
+
+    await Refresh();
+}
+```
