@@ -109,7 +109,7 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 	}
 ```
 
-**Ejemplo de IndexedDb** 
+## Ejemplo de IndexedDb
 ```csharp
 using Blazor.IndexedDB;
 using Microsoft.JSInterop;
