@@ -89,7 +89,7 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 	}
 ```
 
-**todas las entidades deben implementar la siguiente interfaz:** 
+## todas las entidades deben implementar la siguiente interfaz:
 ```csharp
 	public interface IEntity
 	{
