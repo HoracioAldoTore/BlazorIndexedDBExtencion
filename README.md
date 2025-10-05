@@ -18,7 +18,7 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 ## Codigo de ejemplo de un CRUD
 
 **Create** 
-```
+```csharp
   private async void Crear()
   {
       // Crear (Create)
@@ -35,7 +35,7 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 ```
 
 **Read** 
-```
+```csharp
     private async void Leer()
     {
 
