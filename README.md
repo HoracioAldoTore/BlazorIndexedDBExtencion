@@ -13,4 +13,21 @@ https://www.nuget.org/packages/Blazor.IndexedDB
 Los métodos de extensión se encuentran definidos en el archivo **BlazorIndexedDBExtencion.cs** 
 y utilizan reflection c# para descubrir métodos y propiedades.
 
-**3)** Crear el modelo de base de datos apoyandose como ejemplo en el arrchivo **ExampleDb.cs**
+**3)** Crear el modelo de base heredando de IndexedDb, puede tomar como ejemplo el arrchivo **ExampleDb.cs**
+
+```
+  private async void Crear()
+  {
+      // Crear (Create)
+      var newEmployee = new Employee
+      {
+          FirstName = $"Manuel",
+          LastName = $"Sadosky - {Guid.NewGuid()}"
+      };
+      await DbFactory.Insert(newEmployee);
+      //await DbFactory.Save(newEmployee);
+
+      await Refresh();
+  }
+```
+
