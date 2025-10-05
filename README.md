@@ -34,3 +34,20 @@ y utilizan reflection c# para descubrir métodos y propiedades.
   }
 ```
 
+**Read** 
+```
+    private async void Leer()
+    {
+
+        // Leer (Read)  
+        int id = _Employees.Last().Id.Value;
+        var oneEmployee = await DbFactory.SelectOne<Employee>(id);
+        string msg = $"Id:        {oneEmployee.Id}\n" +
+                     $"FirstName: {oneEmployee.FirstName}\n" +
+                     $"LastName:  {oneEmployee.LastName}\n";
+        
+        await JsRuntime.InvokeVoidAsync("alert", msg); // Alert
+
+        await Refresh();
+    }
+```
