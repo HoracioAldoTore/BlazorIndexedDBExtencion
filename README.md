@@ -164,3 +164,14 @@ namespace AppIndexedDB.Data
     }
 }
 ```
+## Metodo Refresh()
+Como podemos ver, después de cada método del CRUD, se invoca al método Refresh() 
+para que se actualice la interfaz de usuario y de ese modo la lista 
+de empleados (Employee) que se muestra.
+```csharp
+	private async Task Refresh()
+	{
+	 _Employees = await DbFactory.SelectAll<Employee>();
+	 StateHasChanged();
+	}
+```
