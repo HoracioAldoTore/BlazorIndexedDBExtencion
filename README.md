@@ -15,7 +15,17 @@ y utilizan reflection c# para descubrir métodos y propiedades.
 
 **3)** Crear el modelo de base heredando de IndexedDb, puede tomar como ejemplo el arrchivo **ExampleDb.cs**
 
-## Codigo de ejemplo de un CRUD
+## 'Use' antes que el CRUD (Create, Read, Update, Delete)
+Análogamente a como lo hacemos en SQL Server, debemos antes que nada establecer sobre 
+qué base de datos queremos actuar, para esto utilizamos el método Use.
+La siguiente línea de código establece al modelo de base de datos IndexedDb 
+llamado "ExampleDb" como la base de datos activa.
+
+```csharp
+	DbFactory.Use<ExampleDb>();
+```
+
+## Codigo de ejemplo de un CRUD (Create, Read, Update, Delete)
 
 **Create** 
 ```csharp
