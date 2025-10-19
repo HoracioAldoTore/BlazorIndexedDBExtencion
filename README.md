@@ -4,6 +4,9 @@ Son métodos de extensión que utilizan el paquete de NuGet de **Blazor.IndexedD
 Video de ejemplo de una aplicacion Blazor en lenguaje C# que utiliza la base de datos local IndexedDB:
 https://youtu.be/WPkL43kr5x0
 
+## Puede ejecutar la aplicación online en:
+[Aplicación](https://horacioaldotore.github.io/BlazorIndexedDBExtencion/)
+
 ## Pasos a seguir para la instalacion:
 
 **1)** Instalar el paquete de NuGet de Blazor.IndexedDB version 3.0.3. Siguindo lo indicado en: 
